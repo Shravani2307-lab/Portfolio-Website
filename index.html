@@ -6,61 +6,83 @@
     <title>Portfolio - Shravani C. K.</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Poppins', sans-serif;
+        /* General Reset */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             background-color: powderblue;
         }
+
         header {
             background: #E6DFD0;
             color: #034245;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem 2rem;
+            padding: 1rem;
             border-bottom: 2px solid #034245;
         }
+        
         header .header-text {
-            max-width: 70%;
+            max-width: 100%;
         }
+        
         header img {
-            width: 150px;
-            height: 170px;
+            max-width: 100px;
+            height: auto;
             object-fit: cover;
             border-radius: 8px;
         }
+
         nav {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             background: #333;
-            padding: 0.5rem 0;
+            padding: 0.5rem;
         }
+        
         nav a {
             color: white;
             text-decoration: none;
             padding: 0.5rem 1rem;
             transition: background 0.3s;
         }
+        
         nav a:hover {
             background: #00848C;
         }
+
         section {
-            padding: 1.5rem 2rem;
-            margin: 0 auto;
-            max-width: 1200px;
+            padding: 1rem;
+            margin: 1rem auto;
+            max-width: 95%;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 0.5rem;
+        }
+
+        p {
             margin-bottom: 1rem;
         }
+
         .projects {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
         }
+        
         .project-card {
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -69,52 +91,46 @@
             text-align: center;
             transition: transform 0.2s;
         }
+        
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-        .project-title-card {
-            grid-column: span 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #f9f9f9;
-            border-radius: 8px;
-            padding: 2rem;
-            border: 1px solid #ddd;
-            text-align: center;
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+
         footer {
             background: #333;
             color: white;
             text-align: center;
             padding: 1rem;
-            margin-top: 2rem;
         }
+
         .skills ul {
             list-style-type: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
             gap: 0.5rem;
         }
+        
         .skills ul li {
             background: #E6DFD0;
             padding: 0.5rem;
             border-radius: 4px;
             text-align: center;
         }
+
         .contact form {
             display: grid;
             gap: 1rem;
         }
+        
         .contact input, .contact textarea, .contact button {
+            width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
+        
         .contact button {
             background: #034245;
             color: white;
@@ -122,8 +138,34 @@
             cursor: pointer;
             transition: background 0.3s;
         }
+        
         .contact button:hover {
             background: #00848C;
+        }
+
+        /* Media Queries for Small Screens */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            header img {
+                margin: 1rem 0;
+            }
+
+            nav {
+                flex-direction: column;
+            }
+
+            nav a {
+                padding: 0.5rem;
+                text-align: center;
+            }
+
+            section {
+                margin: 1rem;
+            }
         }
     </style>
 </head>
@@ -149,7 +191,7 @@
         <p>I am Shravani Kamble, a motivated learner pursuing my B.E. in Information Technology at IIIT Pune. With experience in Java, Python, and Web Development, I am passionate about solving real-world challenges and contributing to impactful projects. Currently exploring data science and analytics while preparing for my MS in the UK.</p>
     </section>
     <section id="projects" class="projects">
-        <div class="project-title-card">Projects</div>
+        <h2>Projects</h2>
         <div class="project-card">
             <h3>Fraud Detection Model</h3>
             <p>Technologies: Python, Power BI | Developed a model to visualize frauds in PPP data, enhancing analytical skills.</p>
@@ -206,9 +248,12 @@
         </ul>
     </section>
     <section id="contact" class="contact">
-        <p>Connect with me: <a href="https://linkedin.com/in/shravani-c-k-00a95b251" target="_blank">LinkedIn</a> | 
+        <h2>Contact</h2>
+        <p>Connect with me: 
+            <a href="https://linkedin.com/in/shravani-c-k-00a95b251" target="_blank">LinkedIn</a> | 
             <a href="https://github.com/Shravani2307-lab" target="_blank">GitHub</a> | 
-            <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank">View Certifications</a></p>
+            <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank">View Certifications</a>
+        </p>
     </section>
     <footer>
         <p>&copy; 2025 Shravani C. K. All rights reserved.</p>
