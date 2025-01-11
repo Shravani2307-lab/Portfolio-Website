@@ -1,1 +1,218 @@
 # Portfolio-Website
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Shravani C. K.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            line-height: 1.6;
+            background-color: powderblue;
+        }
+        header {
+            background: #E6DFD0;
+            color: #034245;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            border-bottom: 2px solid #034245;
+        }
+        header .header-text {
+            max-width: 70%;
+        }
+        header img {
+            width: 150px;
+            height: 170px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background: #333;
+            padding: 0.5rem 0;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: background 0.3s;
+        }
+        nav a:hover {
+            background: #00848C;
+        }
+        section {
+            padding: 1.5rem 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .project-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f9f9f9;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .project-title-card {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+        .skills ul {
+            list-style-type: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.5rem;
+        }
+        .skills ul li {
+            background: #E6DFD0;
+            padding: 0.5rem;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .contact form {
+            display: grid;
+            gap: 1rem;
+        }
+        .contact input, .contact textarea, .contact button {
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .contact button {
+            background: #034245;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .contact button:hover {
+            background: #00848C;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-text">
+            <h1>Shravani C. K.</h1>
+            <p>Proactive Learner | Aspiring Data Scientist | Writer</p>
+        </div>
+        <img src="pic.jpg" alt="Profile Image">
+    </header>
+    <nav>
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Links</a>
+    </nav>
+    <section id="about" class="about">
+        <h2>About Me</h2>
+        <p>I am Shravani Kamble, a motivated learner pursuing my B.E. in Information Technology at IIIT Pune. With experience in Java, Python, and Web Development, I am passionate about solving real-world challenges and contributing to impactful projects. Currently exploring data science and analytics while preparing for my MS in the UK.</p>
+    </section>
+    <section id="projects" class="projects">
+        <div class="project-title-card">Projects</div>
+        <div class="project-card">
+            <h3>Fraud Detection Model</h3>
+            <p>Technologies: Python, Power BI | Developed a model to visualize frauds in PPP data, enhancing analytical skills.</p>
+        </div>
+        <div class="project-card">
+            <h3>Optimal Ship Routing Algorithm</h3>
+            <p>Technologies: Python, PyTorch | Improved routing efficiency by 50% using real-time map data.</p>
+        </div>
+        <div class="project-card">
+            <h3>Vedtatva</h3>
+            <p>Technologies: HTML, CSS, JavaScript | Designed an Ayurvedic solutions website, speeding project delivery by 30%.</p>
+        </div>
+        <div class="project-card">
+            <h3>Chatbot Development</h3>
+            <p>Technologies: Python, NLTK | Created a chatbot for natural language processing and conversational flow.</p>
+        </div>
+        <div class="project-card">
+            <h3>Learn to Code</h3>
+            <p>Technologies: Python, Java, C, C++ | Created a GitHub repository for beginners to learn basic programs in these languages.</p>
+        </div>
+    </section>
+    <section id="experience" class="experience">
+        <h2>Experience</h2>
+        <p><strong>Java Development Intern</strong> - Tech Octanet Services Pvt. Ltd. (May 2024 - July 2024)</p>
+        <ul>
+            <li>Developed an ATM interface using Java and core OOP principles.</li>
+            <li>Enhanced time management skills and gained in-depth Java knowledge.</li>
+        </ul>
+    </section>
+    <section id="education" class="education">
+        <h2>Education</h2>
+        <p><strong>International Institute of Information Technology (I²IT), Pune</strong> - B.E. IT (2022-2026) | GPA: 7.93</p>
+        <p><strong>Creative Public School & Jr. College</strong> - XII HSC (2020-2022) | 79%</p>
+        <p><strong>Podar International School, Pimpri</strong> - X ICSE (2010-2020) | 89%</p>
+    </section>
+    <section id="skills" class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li><strong>Programming:</strong> Python, Java, C, C++</li>
+            <li><strong>Data Tools:</strong> Pandas, NumPy, Matplotlib, Power BI</li>
+            <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript</li>
+            <li><strong>Databases:</strong> Relational Databases, Kaggle</li>
+            <li><strong>Software:</strong> Hadoop, Spark</li>
+            <li><strong>Operating Systems:</strong> Windows, Linux</li>
+        </ul>
+    </section>
+    <section id="certifications" class="certifications">
+        <h2>Certifications</h2>
+        <ul>
+            <li>Crash Course on Python — Google (Coursera)</li>
+            <li>Introduction to Git & GitHub — Google (Coursera)</li>
+            <li>Smart India Hackathon (Team Leader) — Selected for College Round</li>
+            <li>Certified Course in C/C++ — Disha Institutes</li>
+        </ul>
+    </section>
+    <section id="contact" class="contact">
+        <p>Connect with me: <a href="https://linkedin.com/in/shravani-c-k-00a95b251" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/Shravani2307-lab" target="_blank">GitHub</a> | 
+            <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank">View Certifications</a></p>
+    </section>
+    <footer>
+        <p>&copy; 2025 Shravani C. K. All rights reserved.</p>
+    </footer>
+</body>
+</html>
