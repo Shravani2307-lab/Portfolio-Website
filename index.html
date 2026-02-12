@@ -6,83 +6,61 @@
     <title>Portfolio - Shravani C. K.</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* General Reset */
-        * {
+        body {
+            font-family: 'Poppins', sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             background-color: powderblue;
         }
-
         header {
             background: #E6DFD0;
             color: #034245;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
-            padding: 1rem;
+            padding: 1rem 2rem;
             border-bottom: 2px solid #034245;
         }
-        
         header .header-text {
-            max-width: 100%;
+            max-width: 70%;
         }
-        
         header img {
-            max-width: 100px;
-            height: auto;
+            width: 150px;
+            height: 170px;
             object-fit: cover;
             border-radius: 8px;
         }
-
         nav {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
             background: #333;
-            padding: 0.5rem;
+            padding: 0.5rem 0;
         }
-        
         nav a {
             color: white;
             text-decoration: none;
             padding: 0.5rem 1rem;
             transition: background 0.3s;
         }
-        
         nav a:hover {
             background: #00848C;
         }
-
         section {
-            padding: 1rem;
-            margin: 1rem auto;
-            max-width: 95%;
+            padding: 1.5rem 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
             background: white;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            margin-bottom: 0.5rem;
-        }
-
-        p {
             margin-bottom: 1rem;
         }
-
         .projects {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1rem;
         }
-        
         .project-card {
             border: 1px solid #ddd;
             border-radius: 8px;
@@ -91,46 +69,52 @@
             text-align: center;
             transition: transform 0.2s;
         }
-        
         .project-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
         }
-
+        .project-title-card {
+            grid-column: span 2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #f9f9f9;
+            border-radius: 8px;
+            padding: 2rem;
+            border: 1px solid #ddd;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
         footer {
             background: #333;
             color: white;
             text-align: center;
             padding: 1rem;
+            margin-top: 2rem;
         }
-
         .skills ul {
             list-style-type: none;
             padding: 0;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 0.5rem;
         }
-        
         .skills ul li {
             background: #E6DFD0;
             padding: 0.5rem;
             border-radius: 4px;
             text-align: center;
         }
-
         .contact form {
             display: grid;
             gap: 1rem;
         }
-        
         .contact input, .contact textarea, .contact button {
-            width: 100%;
             padding: 0.8rem;
             border: 1px solid #ddd;
             border-radius: 4px;
         }
-        
         .contact button {
             background: #034245;
             color: white;
@@ -138,34 +122,8 @@
             cursor: pointer;
             transition: background 0.3s;
         }
-        
         .contact button:hover {
             background: #00848C;
-        }
-
-        /* Media Queries for Small Screens */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            header img {
-                margin: 1rem 0;
-            }
-
-            nav {
-                flex-direction: column;
-            }
-
-            nav a {
-                padding: 0.5rem;
-                text-align: center;
-            }
-
-            section {
-                margin: 1rem;
-            }
         }
     </style>
 </head>
@@ -173,10 +131,11 @@
     <header>
         <div class="header-text">
             <h1>Shravani C. K.</h1>
-            <p> Proactive Learner | Aspiring Data Scientist | Writer </p>
+            <p>Proactive Learner | Aspiring Data Scientist | Writer | Data Engineer</p>
         </div>
         <img src="pic.jpg" alt="Profile Image">
     </header>
+
     <nav>
         <a href="#about">About</a>
         <a href="#projects">Projects</a>
@@ -184,83 +143,125 @@
         <a href="#education">Education</a>
         <a href="#skills">Skills</a>
         <a href="#certifications">Certifications</a>
+        <a href="#leadership">Leadership</a>
         <a href="#contact">Links</a>
     </nav>
+
     <section id="about" class="about">
         <h2>About Me</h2>
-        <p>I am Shravani, a dedicated learner pursuing a B.E. in Information Technology at I²IT Pune.
-             With a strong foundation in Java, Python, and Web Development, I am passionate about leveraging technology to solve real-world challenges. 
-             Currently delving into data science and analytics, I am eager to contribute to meaningful projects that drive impact and innovation.</p>
+        <p>I am Shravani Kamble, a motivated learner pursuing my B.E. in Information Technology at IIIT Pune. With strong experience in Java, Python, Data Engineering, and Machine Learning, I have built ETL pipelines, automated analytical workflows and contributed to end-to-end software development.</p>
+        <p>My experience includes building scalable data architectures, ensuring 100% data quality validation, and creating dashboards used by 200+ stakeholders. I am passionate about analytics, automation, engineering real-time datasets, and developing systems that create business impact.</p>
     </section>
+
     <section id="projects" class="projects">
-        <h2>Projects</h2>
+        <div class="project-title-card">Projects</div>
+
+        <div class="project-card">
+            <h3>Inventory Management System</h3>
+            <p>Java, Swing, MySQL | Manages 1000+ records with ACID validation & automated triggers.</p>
+        </div>
+
         <div class="project-card">
             <h3>Fraud Detection Model</h3>
-            <p>Technologies: Python, Power BI | Developed a model to visualize frauds in PPP data, enhancing analytical skills.</p>
+            <p>Python, Scikit-learn | Classified 100k+ records using ensemble ML models.</p>
         </div>
+
         <div class="project-card">
             <h3>Optimal Ship Routing Algorithm</h3>
-            <p>Technologies: Python, PyTorch | Improved routing efficiency by 50% using real-time map data.</p>
+            <p>Python, PyTorch | Predictive routing with 50% reduced fuel consumption.</p>
         </div>
+
         <div class="project-card">
             <h3>Vedtatva</h3>
-            <p>Technologies: HTML, CSS, JavaScript | Designed an Ayurvedic solutions website, speeding project delivery by 30%.</p>
+            <p>Ayurvedic Website using HTML, CSS, JS | Completed with 30% faster delivery.</p>
         </div>
+
         <div class="project-card">
             <h3>Chatbot Development</h3>
-            <p>Technologies: Python, NLTK | Created a chatbot for natural language processing and conversational flow.</p>
+            <p>NLP Chatbot using Python & NLTK | Designed for conversational flow.</p>
         </div>
+
         <div class="project-card">
             <h3>Learn to Code</h3>
-            <p>Technologies: Python, Java, C, C++ | Created a GitHub repository for beginners to learn basic programs in these languages.</p>
+            <p>GitHub Repo with programs in Python, Java, C, C++ for beginners.</p>
         </div>
     </section>
+
     <section id="experience" class="experience">
-    <h2>Experience</h2>
-    <p><strong>Operations Manager</strong> - Mideara Enterprises (Feb 2025 - Present)</p>
-    <ul>
-        <li>Implemented the knowledge of Programming Languages (Java & Python) for real-time projects.</li>
-        <li>Created mock websites using HTML, CSS, and JavaScript.</li>
-        <li>Collaborated with team members to design visually appealing and user-friendly interfaces.</li>
-        <li>Incorporated stakeholder feedback and ensured responsiveness across devices.</li>
-    </ul>
-</section>
+        <h2>Experience</h2>
+
+        <h3>Software Trainee – Data Engineering | Inorg Global (Jan 2026 – Present)</h3>
+        <ul>
+            <li>Developed ETL workflows in SQL & Python for raw dataset ingestion.</li>
+            <li>Automated data quality validation ensuring 100% accuracy.</li>
+            <li>Refined curated data lakes for improved BI reporting.</li>
+        </ul>
+
+        <h3>Software Developer Intern – Analytics | Mideara Enterprises (Feb 2025 – Sept 2025)</h3>
+        <ul>
+            <li>Created dashboards used by 200+ stakeholders.</li>
+            <li>Optimized UI workflows reducing manual work by 25%.</li>
+            <li>Analyzed operational datasets for business insights.</li>
+        </ul>
+
+        <h3>Java Development Intern | Tech Octanet (May 2024 – July 2024)</h3>
+        <ul>
+            <li>Developed ATM software using Java and OOPs.</li>
+        </ul>
+    </section>
 
     <section id="education" class="education">
         <h2>Education</h2>
-        <p><strong>International Institute of Information Technology (I²IT), Pune</strong> - B.E. IT (2022-2026) | <B>GPA: 8.71 </B></p>
-        <p><strong>Creative Public School & Jr. College</strong> - XII HSC (2020-2022) | <B>GPA: 8.32 (79%) </B></p>
-        <p><strong>Podar International School, Pimpri</strong> - X ICSE (2010-2020) | <B>GPA: 9.37 (89%) </B></p>
+        <p><strong>Savitribai Phule Pune University (SPPU)</strong> — B.E. IT(SEM 07) | GPA: 9.4</p>
+        <p><strong>Creative Public School & Junior College</strong> — HSC | 79%</p>
+        <p><strong>Podar International School</strong> — ICSE | 89%</p>
     </section>
+
     <section id="skills" class="skills">
         <h2>Skills</h2>
         <ul>
-            <li><strong>Programming:</strong> Python, SQL, Java, C, C++</li>
-            <li><strong>Data Tools:</strong> Pandas, NumPy, Matplotlib, Power BI</li>
-            <li><strong>Web Technologies:</strong> HTML, CSS, JavaScript</li>
-            <li><strong>Databases:</strong> Relational Databases, Kaggle</li>
-            <li><strong>Operating Systems:</strong> Windows, Linux</li>
+            <li><strong>Programming:</strong> Python, Java, C, C++, SQL (MySQL, PostgreSQL)</li>
+            <li><strong>Data Engineering:</strong> ETL Pipelines, Data Warehousing, Workflow Automation</li>
+            <li><strong>ML & Analytics:</strong> Scikit-learn, PyTorch, EDA, Feature Engineering</li>
+            <li><strong>Tools:</strong> Tableau, Git, GitHub, Jupyter, REST APIs</li>
+            <li><strong>Cloud:</strong> Azure Data Fundamentals</li>
+            <li><strong>Methodologies:</strong> SDLC, Agile, Model Evaluation</li>
+            <li><strong>Web:</strong> HTML, CSS, JavaScript</li>
         </ul>
     </section>
+
     <section id="certifications" class="certifications">
         <h2>Certifications</h2>
         <ul>
-            <li> Google Data Analytics— <B>Google (Coursera)</B></li>
-            <li> Smart India Hackathon (Team Leader) — Selected for College Round</li>
-            <li> Certified Course in C/C++ — Disha Institutes</li>
-            <li> Crash Course on Python — <B>Google (Coursera)</B></li>
-            <li> Introduction to Git & GitHub — <B>Google (Coursera)</B></li>
+            <li>Google Data Analytics Professional Certificate</li>
+            <li>Microsoft Azure Data Fundamentals</li>
+            <li>Python for Beginners</li>
+            <li>Crash Course on Python — Google</li>
+            <li>Introduction to Git & GitHub</li>
+            <li>Certified C/C++ — Disha Institute</li>
         </ul>
     </section>
+
+    <section id="leadership" class="leadership">
+        <h2>Leadership & Honors</h2>
+        <ul>
+            <li>Chair — ACM Student Chapter</li>
+            <li>Diploma in Bharatnatyam</li>
+            <li>Best Speaker — Podar MUN</li>
+        </ul>
+    </section>
+
     <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Connect with me: 
-            <p>shravanick23feb@gmail.com</p>
+        <p>
+            Connect with me: 
+            <a href="mailto:shravanick23feb@gmail.com">Email</a> |
             <a href="https://linkedin.com/in/shravani-c-k-00a95b251" target="_blank">LinkedIn</a> | 
             <a href="https://github.com/Shravani2307-lab" target="_blank">GitHub</a> | 
-            <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank">View Certifications</a>
+            <a href="https://shravani2307-lab.github.io/Portfolio-Website/" target="_blank">Portfolio</a> |
+            <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank">Certifications</a>
         </p>
     </section>
+
     <footer>
         <p>&copy; 2025 Shravani C. K. All rights reserved.</p>
     </footer>
