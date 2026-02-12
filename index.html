@@ -193,7 +193,8 @@ section h2{
 }
 
 .project-card{
-    background:white;
+    background:rgb(250, 237, 237);
+    color: #214121;
     border-radius:18px;
     padding:1.6rem;
     border:1px solid var(--peach);
@@ -248,25 +249,36 @@ footer{
     border-radius:18px 18px 0 0;
 }
 
-/* THEME TOGGLE */
-.themeToggle{
-    position:fixed;
-    bottom:20px;
-    right:20px;
-    padding:12px 15px;
-    background:var(--green);
-    color:rgb(241, 219, 219);
-    border-radius:50%;
-    cursor:pointer;
-    z-index:9999;
-    font-size:1.2rem;
+.theme-toggle {
+    position: fixed;
+    bottom: 25px;       /* move to bottom */
+    right: 25px;        /* move to right */
+    padding: 12px 16px;
+    font-size: 22px;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+    background: rgba(255,255,255,0.55);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+    transition: 0.3s;
+    z-index: 9999;      /* always on top */
 }
+.theme-toggle:hover {
+    transform: scale(1.1);
+}
+body.dark-mode {
+    background: #000000;
+    color: #eee;
+}
+
+
 
 </style>
 </head>
 
 <body class="no-js">
-
+<button id="theme-toggle" class="theme-toggle">🌞</button>
 <!-- Botanical Backgrounds -->
 <img src="leaf-removebg-preview.png" class="bg-leaf left-leaf">
 <img src="leaf-removebg-preview.png" class="bg-leaf right-leaf">
@@ -424,46 +436,36 @@ footer{
     </p>
 </section>
 
+
 <footer>
-    <p>&copy; 2025 Shravani C. K. All rights reserved.</p>
+    <p>&copy; 2026 Shravani C. K. All rights reserved.</p>
+
 </footer>
 
 <!-- SCRIPTS -->
 <script>
-document.body.classList.remove("no-js");
+const toggle = document.getElementById("theme-toggle");
+const body = document.body;
 
-const sections = document.querySelectorAll("section");
-const reveal = () => {
-    sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if(rect.top < window.innerHeight - 80){
-            sec.classList.add("visible");
-        }
-    });
-};
-window.addEventListener("scroll", reveal);
-reveal();
-
-const toggle = document.createElement("div");
-toggle.className = "themeToggle";
-toggle.innerHTML = "🌗";
-document.body.appendChild(toggle);
-
-toggle.onclick = () => {
-    document.body.classList.toggle("dark-mode");
-    document.body.classList.toggle("light-mode");
-    localStorage.setItem("theme",
-        document.body.classList.contains("dark-mode") ? "dark" : "light"
-    );
-};
-
-const saved = localStorage.getItem("theme");
-if(saved === "dark"){
-    document.body.classList.add("dark-mode");
-} else {
-    document.body.classList.add("light-mode");
+// Load saved theme
+if (localStorage.getItem("theme") === "dark") {
+    body.classList.add("dark-mode");
+    toggle.innerHTML = "🌙";
 }
+
+toggle.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+
+    if (body.classList.contains("dark-mode")) {
+        toggle.innerHTML = "🌙";  
+        localStorage.setItem("theme", "dark");
+    } else {
+        toggle.innerHTML = "🌞";
+        localStorage.setItem("theme", "light");
+    }
+});
 </script>
+
 
 </body>
 </html>
