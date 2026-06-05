@@ -1,479 +1,756 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio - Shravani C. K.</title>
-
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio - Shravani C. K.</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 <style>
+  :root {
+    --bg: #faf9f7;
+    --bg2: #f2f0eb;
+    --card: #ffffff;
+    --text: #1a1916;
+    --muted: #6b6860;
+    --accent: #2e7d5b;
+    --accent2: #1a4d38;
+    --border: rgba(0,0,0,0.09);
+    --tag-bg: #e8f4ee;
+    --tag-text: #1a4d38;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.7;
+  }
 
-/* RESET */
-*{ margin:0; padding:0; box-sizing:border-box; }
-body{
-    font-family:"Poppins",sans-serif;
-    background:#F7F7F7;
-    overflow-x:hidden;
-    transition:background 0.5s ease, color 0.5s ease;
-}
+  /* ── NAV ── */
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(250,249,247,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2rem;
+    display: flex; align-items: center; justify-content: space-between;
+    height: 60px;
+  }
+  .nav-logo {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.15rem;
+    color: var(--text);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+  }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--accent); }
 
-/* Fallback */
-body.no-js section{
-    opacity:1 !important;
-    transform:none !important;
-}
+  /* ── HERO ── */
+  .hero {
+    min-height: 92vh;
+    display: flex; align-items: center;
+    padding: 5rem 4rem 5rem;
+    gap: 4rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .hero-text { flex: 1; }
+  .hero-eyebrow {
+    display: inline-block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--tag-bg);
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: var(--text);
+    margin-bottom: 1rem;
+  }
+  .hero h1 em { color: var(--accent); font-style: italic; }
+  .hero-sub {
+    font-size: 1rem;
+    color: var(--muted);
+    max-width: 480px;
+    margin-bottom: 2rem;
+    line-height: 1.75;
+  }
+  .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn {
+    padding: 0.65rem 1.4rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all .2s;
+    display: inline-block;
+    letter-spacing: 0.01em;
+  }
+  .btn-primary { background: var(--accent); color: #fff; border: 1.5px solid var(--accent); }
+  .btn-primary:hover { background: var(--accent2); border-color: var(--accent2); }
+  .btn-outline { background: transparent; color: var(--text); border: 1.5px solid var(--border); }
+  .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+  .hero-photo {
+    width: 260px; height: 320px; flex-shrink: 0;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 2px solid var(--border);
+    background: var(--bg2);
+  }
+  .hero-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-badges {
+    display: flex; gap: 0.6rem; flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .badge {
+    font-size: 0.72rem; font-weight: 500;
+    padding: 4px 10px; border-radius: 20px;
+    background: var(--bg2);
+    color: var(--muted);
+    border: 1px solid var(--border);
+  }
 
-/* COLORS */
-:root {
-    --green:#355834;
-    --peach:#fcd5ce;
-    --mint:#a7c4c2;
-}
+  /* ── SECTIONS ── */
+  section { padding: 5rem 4rem; max-width: 1100px; margin: 0 auto; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.4rem);
+    letter-spacing: -0.02em;
+    margin-bottom: 2.5rem;
+    line-height: 1.2;
+  }
+  .divider {
+    border: none; border-top: 1px solid var(--border);
+    max-width: 1100px; margin: 0 auto;
+  }
 
-/* --------------------------
-   BACKGROUND BOTANICALS
---------------------------*/
-.bg-leaf, .bg-flower{
-    position:fixed;
-    opacity: 0.45; /* improved visibility */
-    z-index:-5;
-    filter:blur(1px);
-    animation:floatLeaf 8s infinite ease-in-out alternate;
-}
+  /* ── ABOUT ── */
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
+  .about-text { font-size: 0.95rem; color: var(--muted); line-height: 1.85; }
+  .about-text p + p { margin-top: 1rem; }
+  .about-stats { display: grid; gap: 1rem; }
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 1.4rem;
+  }
+  .stat-num {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2rem; color: var(--accent);
+    line-height: 1;
+  }
+  .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 0.2rem; }
 
-.left-leaf{
-    top:18%;
-    left:-6%;
-    width:260px;
-}
-.right-leaf{
-    bottom:8%;
-    right:-6%;
-    width:260px;
-}
-.flower-1{
-    top:62%;
-    left:3%;
-    width:140px;
-}
-.flower-2{
-    bottom:12%;
-    right:6%;
-    width:140px;
-    transform:rotate(8deg);
-}
+  /* ── EXPERIENCE ── */
+  .exp-list { display: flex; flex-direction: column; gap: 1.5rem; }
+  .exp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem 1.75rem;
+    position: relative;
+  }
+  .exp-header { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem; }
+  .exp-role { font-size: 1rem; font-weight: 600; }
+  .exp-company { font-size: 0.82rem; color: var(--accent); font-weight: 500; margin-top: 2px; }
+  .exp-period {
+    font-size: 0.75rem; color: var(--muted);
+    background: var(--bg2); padding: 3px 10px;
+    border-radius: 20px; white-space: nowrap;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.45rem; }
+  .exp-bullets li {
+    font-size: 0.875rem; color: var(--muted); padding-left: 1.2rem; position: relative; line-height: 1.6;
+  }
+  .exp-bullets li::before { content: "→"; position: absolute; left: 0; color: var(--accent); font-size: 0.75rem; top: 0.1rem; }
 
-@keyframes floatLeaf{
-    0%{ transform:translateY(0) }
-    100%{ transform:translateY(-20px) }
-}
+  /* ── PROJECTS ── */
+  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.25rem; }
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.5rem;
+    transition: border-color .2s, transform .2s;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .project-tag {
+    font-size: 0.68rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--tag-text);
+    background: var(--tag-bg); padding: 3px 9px;
+    border-radius: 20px; display: inline-block; margin-bottom: 0.75rem;
+  }
+  .project-title { font-size: 0.95rem; font-weight: 600; margin-bottom: 0.5rem; line-height: 1.35; }
+  .project-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.65; }
+  .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .stack-pill {
+    font-size: 0.68rem; font-weight: 500;
+    background: var(--bg2); color: var(--muted);
+    padding: 2px 8px; border-radius: 20px;
+    border: 1px solid var(--border);
+  }
 
-/* --------------------------
-   HEADER
---------------------------*/
-header{
-    background:rgba(255, 240, 240, 0.55);
-    backdrop-filter:blur(12px);
-    padding:2rem;
-    border-bottom:2px solid rgba(53,88,52,0.2);
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    flex-wrap:wrap;
-    border-radius:0 0 24px 24px;
-}
-header h1{
-    font-size:2.4rem;
-    font-weight:700;
-    color:var(--green);
-}
-header img{
-    width:150px; height:170px;
-    border-radius:20px;
-    border:3px solid var(--green);
-    object-fit:cover;
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    animation:floating 3.5s infinite ease-in-out;
-}
-@keyframes floating{
-    0%{transform:translateY(0)}
-    50%{transform:translateY(-10px)}
-    100%{transform:translateY(0)}
-}
+  /* ── SKILLS ── */
+  .skills-outer { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1.25rem; }
+  .skill-group {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem 1.4rem;
+  }
+  .skill-group-title { font-size: 0.78rem; font-weight: 600; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.75rem; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .skill-tag { font-size: 0.75rem; background: var(--bg2); color: var(--text); padding: 4px 10px; border-radius: 20px; border: 1px solid var(--border); }
 
-/* --------------------------
-   NAVIGATION (Premium)
---------------------------*/
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(255, 240, 240, 0.55);
-    backdrop-filter:blur(15px);
-    padding:1rem;
-    border-radius:0 0 20px 20px;
-    display:flex;
-    gap:1rem;
-    justify-content:center;
-}
-nav a{
-    text-decoration:none;
-    padding:0.7rem 1.3rem;
-    background:rgb(241, 203, 203);
-    color:var(--green);
-    border-radius:30px;
-    font-weight:600;
-    border:1px solid var(--peach);
-    transition:0.3s ease;
-}
-nav a:hover{
-    background:var(--peach);
-    color:var(--green);
-    transform:translateY(-4px);
-    box-shadow:0 6px 15px rgba(0,0,0,0.15);
-}
+  /* ── EDUCATION ── */
+  .edu-list { display: flex; flex-direction: column; gap: 1.25rem; }
+  .edu-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 1.25rem 1.5rem;
+    display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;
+  }
+  .edu-inst { font-size: 0.95rem; font-weight: 600; }
+  .edu-deg { font-size: 0.82rem; color: var(--muted); margin-top: 3px; }
+  .edu-meta { text-align: right; }
+  .edu-gpa { font-size: 1.1rem; font-weight: 600; color: var(--accent); font-family: 'DM Serif Display', serif; }
+  .edu-year { font-size: 0.75rem; color: var(--muted); }
 
-@media(max-width:768px){
-    nav{
-        display:grid;
-        grid-template-columns:repeat(3,1fr);
-        gap:0.7rem;
-    }
-    nav a{
-        border-radius:12px;
-    }
-}
+  /* ── CERTIFICATIONS ── */
+  .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+  .cert-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1rem 1.25rem;
+    display: flex; align-items: flex-start; gap: 0.85rem;
+  }
+  .cert-icon {
+    width: 36px; height: 36px; border-radius: 9px;
+    background: var(--tag-bg); flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; color: var(--accent);
+  }
+  .cert-name { font-size: 0.82rem; font-weight: 600; line-height: 1.35; }
+  .cert-year { font-size: 0.72rem; color: var(--muted); margin-top: 3px; }
 
-/* --------------------------
-   SECTION
---------------------------*/
-section{
-    width:90%;
-    margin:2rem auto;
-    background:rgba(255,255,255,0.7);
-    backdrop-filter:blur(15px);
-    border-radius:20px;
-    padding:2rem;
-    border:1px solid var(--peach);
-    box-shadow:0 10px 25px rgba(0,0,0,0.1);
-    opacity:0;
-    transform:translateY(60px);
-    transition:all 0.8s ease;
-}
-section.visible{
-    opacity:1;
-    transform:translateY(0);
-}
-section h2{
-    color:var(--green);
-    margin-bottom:1rem;
-    font-size:1.7rem;
-}
+  /* ── LEADERSHIP ── */
+  .leadership-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+  .leader-card {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 12px; padding: 1.1rem 1.25rem;
+  }
+  .leader-role { font-size: 0.88rem; font-weight: 600; line-height: 1.3; }
+  .leader-org { font-size: 0.75rem; color: var(--accent); margin-top: 3px; font-weight: 500; }
+  .leader-desc { font-size: 0.78rem; color: var(--muted); margin-top: 0.5rem; line-height: 1.55; }
 
-/* --------------------------
-   PROJECTS FIXED LAYOUT
---------------------------*/
-#projects {
-    padding-top:1rem;
-}
+  /* ── CONTACT ── */
+  .contact-section {
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 20px; padding: 3rem;
+    text-align: center;
+    max-width: 700px; margin: 0 auto;
+  }
+  .contact-section h2 { font-family: 'DM Serif Display', serif; font-size: 2rem; margin-bottom: 0.5rem; }
+  .contact-section p { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+  .contact-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+  .contact-link {
+    display: flex; align-items: center; gap: 0.5rem;
+    padding: 0.6rem 1.2rem; border-radius: 9px;
+    border: 1.5px solid var(--border);
+    color: var(--text); text-decoration: none;
+    font-size: 0.82rem; font-weight: 500;
+    transition: all .2s; background: var(--bg);
+  }
+  .contact-link:hover { border-color: var(--accent); color: var(--accent); }
 
-.project-title{
-    font-size:1.8rem;
-    color:var(--green);
-    font-weight:700;
-    margin-bottom:1.5rem;
-    text-align:left;
-}
+  /* ── FOOTER ── */
+  footer {
+    text-align: center; padding: 2rem;
+    font-size: 0.75rem; color: var(--muted);
+    border-top: 1px solid var(--border);
+  }
 
-.projects-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:1.4rem;
-}
+  /* ── RESPONSIVE ── */
+  @media (max-width: 768px) {
+    nav { padding: 0 1.2rem; }
+    .nav-links { display: none; }
+    .hero { flex-direction: column; padding: 3rem 1.5rem; gap: 2rem; min-height: auto; }
+    .hero-photo { width: 100%; height: 240px; }
+    section { padding: 3.5rem 1.5rem; }
+    .about-grid { grid-template-columns: 1fr; }
+    .contact-section { padding: 2rem 1.25rem; }
+  }
 
-.project-card{
-    background:rgb(250, 237, 237);
-    color: #214121;
-    border-radius:18px;
-    padding:1.6rem;
-    border:1px solid var(--peach);
-    box-shadow:0 10px 25px rgba(0,0,0,0.15);
-    transition:0.3s;
-    text-align:center;
-}
-.project-card:hover{
-    transform:translateY(-10px);
-    box-shadow:0 16px 40px rgba(53,88,52,0.25);
-}
-
-/* --------------------------
-   SKILLS
---------------------------*/
-.skills ul{
-    list-style:none;
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:1rem;
-}
-.skills li{
-    background:var(--mint);
-    padding:0.8rem;
-    border-radius:12px;
-    color:white;
-    font-weight:600;
-}
-
-/* --------------------------
-   CONTACT
---------------------------*/
-#contact a{
-    padding:0.5rem 0.9rem;
-    background:linear-gradient(45deg,var(--peach),var(--mint));
-    color:var(--green);
-    border-radius:10px;
-    font-weight:700;
-    transition:0.3s;
-}
-#contact a:hover{
-    color:white;
-    box-shadow:0 4px 18px rgba(53,88,52,0.3);
-}
-
-/* FOOTER */
-footer{
-    background:var(--green);
-    color:white;
-    padding:1.6rem;
-    text-align:center;
-    border-radius:18px 18px 0 0;
-}
-
-.theme-toggle {
-    position: fixed;
-    bottom: 25px;       /* move to bottom */
-    right: 25px;        /* move to right */
-    padding: 12px 16px;
-    font-size: 22px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    background: rgba(255,255,255,0.55);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-    transition: 0.3s;
-    z-index: 9999;      /* always on top */
-}
-.theme-toggle:hover {
-    transform: scale(1.1);
-}
-body.dark-mode {
-    background: #000000;
-    color: #eee;
-}
-
-
-
+  /* ── DECORATIVE TOP BORDER ── */
+  body::before {
+    content: ''; display: block; height: 3px;
+    background: linear-gradient(90deg, var(--accent), #5ba88a, var(--accent2));
+  }
 </style>
 </head>
+<body>
 
-<body class="no-js">
-<button id="theme-toggle" class="theme-toggle">🌞</button>
-<!-- Botanical Backgrounds -->
-<img src="leaf-removebg-preview.png" class="bg-leaf left-leaf">
-<img src="leaf-removebg-preview.png" class="bg-leaf right-leaf">
-<img src="flower1-removebg-preview.png" class="bg-flower flower-1">
-<img src="flower1-removebg-preview.png" class="bg-flower flower-2">
-
-<header>
-    <div class="header-text">
-        <h1>Shravani C. K.</h1>
-        <p>Proactive Learner | Aspiring Data Scientist | Writer | Artist
-</p>
-    </div>
-    <img src="WhatsApp Image 2026-01-05 at 1.46.02 PM.jpeg" alt="Profile Image">
-</header>
-
+<!-- NAV -->
 <nav>
-    <a href="#about">About</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#skills">Skills</a>
-    <a href="#certifications">Certifications</a>
-    <a href="#leadership">Leadership</a>
-    <a href="#contact">Links</a>
+  <a href="#" class="nav-logo">Shravani C. K.</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#leadership">Leadership</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
 </nav>
 
-<section id="about">
-    <h2>About Me</h2>
-    <p>I am Shravani Kamble, a motivated learner pursuing my B.E. in Information Technology at I²IT Pune. With strong experience in Java, Python, Data Engineering, and Machine Learning, I have built ETL pipelines, automated analytical workflows and contributed to end-to-end software development.</p>
-    <p>My experience includes building scalable data architectures, ensuring 100% data quality validation, and creating dashboards used by 200+ stakeholders. I am passionate about analytics, automation, engineering real-time datasets, and developing systems that create business impact.</p>
-</section>
-
-<section id="projects">
-    <div class="project-title">Projects 🌍</div>
-
-    <div class="projects-grid">
-
-        <!-- 🌍 NEW PROJECT ADDED -->
-         <div class="project-card">
-            <h3>Retail Data Analytics</h3>
-            <p>
-                Databricks & Power BI | End-to-end data engineering pipeline following medallion architecture, 
-                DAX measures & interactive visual dashboards.
-            </p>
-        </div>
-        <div class="project-card">
-            <h3>Global Superstore Data Analysis Dashboard</h3>
-            <p>
-                Databricks & Power BI | End-to-end analytics pipeline involving data cleaning, 
-                star-schema modelling, DAX measures & interactive visual dashboards.
-            </p>
-        </div>
-
-        <div class="project-card">
-            <h3>Inventory Management System</h3>
-            <p>Java, Swing, MySQL | Manages 1000+ records with ACID validation & automated triggers.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Fraud Detection Model</h3>
-            <p>Python, Scikit-learn | Classified 100k+ records using ensemble ML models.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Optimal Ship Routing Algorithm</h3>
-            <p>Python, PyTorch | Predictive routing with 50% reduced fuel consumption.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Vedtatva</h3>
-            <p>Ayurvedic Website using HTML, CSS, JS | Completed with 30% faster delivery.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Chatbot Development</h3>
-            <p>NLP Chatbot using Python & NLTK | Designed for conversational flow.</p>
-        </div>
-
-        <div class="project-card">
-            <h3>Learn to Code</h3>
-            <p>GitHub Repo with programs in Python, Java, C, C++ for beginners.</p>
-        </div>
-
-    </div>
-</section>
-
-
-<section id="experience">
-    <h2>Experience</h2>
-    <h3>Software Trainee – Data Engineering | Inorg Global (Jan 2026 – April 2026)</h3>
-    <ul>
-        <li>Developed ETL workflows in SQL & Python for raw dataset ingestion.</li>
-        <li>Automated data quality validation ensuring 100% accuracy.</li>
-        <li>Refined curated data lakes for improved BI reporting.</li>
-    </ul>
-    <br>
-    <h3>Software Developer Intern – Analytics | Mideara Enterprises (Feb 2025 – Sept 2025)</h3>
-    <ul>
-        <li>Created dashboards used by 200+ stakeholders.</li>
-        <li>Optimized UI workflows reducing manual work by 25%.</li>
-        <li>Analyzed operational datasets for business insights.</li>
-    </ul>
-    <br>
-    <h3>Java Development Intern | Tech Octanet (May 2024 – July 2024)</h3>
-    <ul>
-        <li>Developed ATM software using Java and OOPs.</li>
-    </ul>
-</section>
-
-<section id="education">
-    <h2>Education</h2>
-    <p><strong>Savitribai Phule Pune University (SPPU)</strong> — B.E. IT(SEM 07) | GPA: 9.4</p>
-    <p><strong>Creative Public School & Junior College</strong> — HSC | 79%</p>
-    <p><strong>Podar International School</strong> — ICSE | 89%</p>
-</section>
-
-<section id="skills">
-    <h2>Skills</h2>
-    <ul>
-        <li><strong>Programming:</strong> Python, Java, C, C++, SQL (MySQL, PostgreSQL)</li>
-        <li><strong>Data Engineering:</strong> ETL Pipelines, Data Warehousing, Workflow Automation</li>
-        <li><strong>ML & Analytics:</strong> Scikit-learn, PyTorch, EDA, Feature Engineering</li>
-        <li><strong>Tools:</strong> Tableau, Git, GitHub, Jupyter, REST APIs</li>
-        <li><strong>Cloud:</strong> Azure Data Fundamentals</li>
-        <li><strong>Methodologies:</strong> SDLC, Agile, Model Evaluation</li>
-        <li><strong>Web:</strong> HTML, CSS, JavaScript</li>
-    </ul>
-</section>
-
-<section id="certifications">
-    <h2>Certifications</h2>
-    <ul>
-        <li>Microsoft Certified: Fabric Data Engineer Associate(2026)</li>
-        <li>Microsoft Azure Data Fundamentals(2026)</li>
-        <li>Google Data Analytics Professional Certificate(2025)</li>
-        <li>Python for Beginners</li>
-        <li>FreeCodeCamp - Data Analysis for Python</li>
-        <li>Crash Course on Python — Google(Coursera)</li>
-        <li>Introduction to Git & GitHub — Google(Coursera)</li>
-        <li>Certified C/C++ — Disha Institute</li>
-    </ul>
-</section>
-
-<section id="leadership">
-    <h2>Leadership & Honors</h2>
-    <ul>
-        <li>Chair — ACM Student Chapter</li>
-        <li>Diploma in Bharatnatyam</li>
-        <li>Best Speaker — Podar MUN</li>
-        <li>Senior Editor – Dhruva Magazine</li>
-        <li>President – First-Year Engineering Students Association</li>
-    </ul>
-</section>
-
-<section id="contact">
-    <p>
-        Connect with me: 
-        <a href="mailto:shravanick23feb@gmail.com">shravanick23feb@gmail.com</a> |
-        <a href="https://linkedin.com/in/shravani-c-k-00a95b251" target="_blank">LinkedIn</a> | 
-        <a href="https://github.com/Shravani2307-lab" target="_blank">GitHub</a> | 
-        <a href="https://shravani2307-lab.github.io/Portfolio-Website/" target="_blank">Portfolio</a> |
-        <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank">Certifications</a>
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <span class="hero-eyebrow">Open to Data & Software Engineering Roles</span>
+    <h1>Shravani<br><em>Kamble</em></h1>
+    <p class="hero-sub">
+      Data Engineer &amp; Software Developer · B.E. IT @ I²IT Pune (GPA 9.4/10) · Microsoft Certified Fabric Data Engineer · Building scalable pipelines, intelligent dashboards, and data-driven systems.
     </p>
+    <div class="hero-cta">
+      <a href="https://www.linkedin.com/in/shravani-kamble-00a95b251/" target="_blank" class="btn btn-primary">LinkedIn ↗</a>
+      <a href="https://github.com/Shravani2307-lab" target="_blank" class="btn btn-outline">GitHub</a>
+      <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank" class="btn btn-outline">Certifications</a>
+    </div>
+    <div class="hero-badges">
+      <span class="badge">ETL &amp; Medallion Architecture</span>
+      <span class="badge">Azure Databricks</span>
+      <span class="badge">Power BI</span>
+      <span class="badge">Python · SQL</span>
+      <span class="badge">MS Fabric Certified</span>
+    </div>
+  </div>
+  <div class="hero-photo">
+    <img src="https://shravani2307-lab.github.io/Portfolio-Website/WhatsApp Image 2026-01-05 at 1.46.02 PM.jpeg" alt="Shravani Kamble" />
+  </div>
+</div>
+
+<hr class="divider" />
+
+<!-- ABOUT -->
+<section id="about">
+  <p class="section-label">About Me</p>
+  <h2 class="section-title">Analytical. Driven. Builder.</h2>
+  <div class="about-grid">
+    <div>
+      <p class="about-text">
+        I'm Shravani Kamble, a final-year B.E. Information Technology student at I²IT Pune (SPPU), graduating June 2026 with a 9.4 GPA. I specialise in Data Engineering — building ETL pipelines, Medallion Architecture data lakehouses, and BI dashboards that power real business decisions.
+      </p>
+      <p class="about-text" style="margin-top: 1rem;">
+        My experience spans Databricks, Azure, Delta Tables, and Power BI. I've processed 200,000+ records with 100% data fidelity, automated CI/CD pipeline workflows, and delivered dashboards used by 200+ stakeholders. I'm equally comfortable leading technical communities, editing publications, and presenting complex data insights to non-technical audiences.
+      </p>
+      <p class="about-text" style="margin-top: 1rem;">
+        Beyond engineering, I'm a published co-author on Maratha cultural heritage and weapon classification, a Bharatanatyam practitioner, and a Best Speaker award winner at MUN. I believe great data engineers are also great communicators.
+      </p>
+    </div>
+    <div class="about-stats">
+      <div class="stat-card">
+        <div class="stat-num">9.4</div>
+        <div class="stat-label">GPA · B.E. IT, SPPU 2026</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">200K+</div>
+        <div class="stat-label">Records processed with 100% data fidelity</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">200+</div>
+        <div class="stat-label">Stakeholders served through BI dashboards</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">25%</div>
+        <div class="stat-label">Reduction in manual reporting overhead</div>
+      </div>
+    </div>
+  </div>
 </section>
 
+<hr class="divider" />
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <p class="section-label">Experience</p>
+  <h2 class="section-title">Where I've worked</h2>
+  <div class="exp-list">
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Software Trainee – Data Engineering</div>
+          <div class="exp-company">Inorg Global · Gear-Up Program</div>
+        </div>
+        <span class="exp-period">Jan 2026 – Apr 2026 · Pune, MH</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Developed ETL workflows using SQL and Python to ingest, sanitise, and transform complex raw datasets into analytics-ready structures on Apache Spark / Databricks.</li>
+        <li>Implemented Medallion Architecture (Bronze, Silver, Gold) Data Lakehouse pipelines, applying data quality validation and governance rules across 200,000+ records with 100% data fidelity.</li>
+        <li>Configured CI/CD automated workflow jobs and refined curated Delta Tables via Unity Catalog to streamline executive reporting and Power BI BI tools.</li>
+        <li>Coordinated with cross-functional teams to align on reporting requirements; surfaced business-critical insights that directly informed KPI reporting and executive decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Software Developer Intern – Analytics</div>
+          <div class="exp-company">Mideara Enterprises</div>
+        </div>
+        <span class="exp-period">Feb 2025 – Sept 2025 · Pune, MH</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Produced interactive Power BI dashboards used by 200+ internal stakeholders for operational and strategic decision-making, translating complex data into clear, actionable recommendations.</li>
+        <li>Automated data reporting pipelines, achieving a 25% reduction in manual overhead; interpreted datasets to surface KPIs supporting data-driven strategic decisions.</li>
+        <li>Communicated complex analytical insights to non-technical business stakeholders through structured presentations.</li>
+      </ul>
+    </div>
+
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-role">Java Development Intern</div>
+          <div class="exp-company">Tech Octanet</div>
+        </div>
+        <span class="exp-period">May 2024 – Jul 2024</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Developed ATM software using Java and OOP principles.</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- PROJECTS -->
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <h2 class="section-title">Things I've built</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="project-tag">Data Engineering</span>
+      <div class="project-title">Retail Analytics – Databricks Data Lakehouse Pipeline</div>
+      <p class="project-desc">End-to-end Data Lakehouse using Medallion Architecture (Bronze/Silver/Gold) on Databricks with pure SQL and Unity Catalog. Processed 200K records across 10K customers; delivered Power BI KPI dashboards with ~INR 32B revenue insights. 3-task CI/CD workflow job, OPTIMIZE/ZORDER/VACUUM, 7 DQ rules.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Databricks</span><span class="stack-pill">SQL</span><span class="stack-pill">Delta Tables</span><span class="stack-pill">Unity Catalog</span><span class="stack-pill">Power BI</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Analytics Architecture</span>
+      <div class="project-title">Global Superstore – End-to-End Analytics</div>
+      <p class="project-desc">Enterprise-grade Data Lakehouse on Databricks Medallion Architecture using the Global Superstore dataset. Star Schema with fact_sales + 5 dimension tables using surrogate keys. Power BI KPIs: $10.13M Total Sales, 104K Quantity, $404.53 Average Sales Value.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Databricks</span><span class="stack-pill">SQL</span><span class="stack-pill">Delta Tables</span><span class="stack-pill">Power BI</span><span class="stack-pill">Star Schema</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Machine Learning</span>
+      <div class="project-title">Financial Fraud Detection Model</div>
+      <p class="project-desc">Classified 100,000+ financial records using ensemble learning (Random Forest, Gradient Boosting) with feature engineering on imbalanced datasets. Generated statistical visualisations and confusion matrices for financial risk transparency reporting.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Python</span><span class="stack-pill">Scikit-learn</span><span class="stack-pill">Pandas</span><span class="stack-pill">Matplotlib</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">ML / Geospatial</span>
+      <div class="project-title">Optimal Ship Routing Algorithm</div>
+      <p class="project-desc">Predictive geospatial routing models using PyTorch, reducing estimated fuel consumption by 50% through optimised route planning. Led a 5-member team using Git-based collaboration and Agile practices across the full project lifecycle.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Python</span><span class="stack-pill">PyTorch</span><span class="stack-pill">Geospatial Data</span><span class="stack-pill">Git</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Software</span>
+      <div class="project-title">Inventory Management System</div>
+      <p class="project-desc">Java Swing + MySQL application managing 1,000+ records with ACID validation and automated triggers for reliable inventory tracking.</p>
+      <div class="project-stack">
+        <span class="stack-pill">Java</span><span class="stack-pill">Swing</span><span class="stack-pill">MySQL</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="project-tag">Web / NLP</span>
+      <div class="project-title">Vedtatva · Chatbot Development · Learn to Code</div>
+      <p class="project-desc">Ayurvedic website (HTML/CSS/JS) delivered with 30% faster turnaround. NLP chatbot in Python &amp; NLTK for conversational flow. Open-source learning repo with Python, Java, C, C++ programs for beginners.</p>
+      <div class="project-stack">
+        <span class="stack-pill">HTML/CSS/JS</span><span class="stack-pill">Python</span><span class="stack-pill">NLTK</span><span class="stack-pill">Java</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- SKILLS -->
+<section id="skills">
+  <p class="section-label">Skills</p>
+  <h2 class="section-title">Tech &amp; tools</h2>
+  <div class="skills-outer">
+
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Python</span><span class="skill-tag">SQL</span><span class="skill-tag">Java</span><span class="skill-tag">JavaScript</span><span class="skill-tag">HTML/CSS</span><span class="skill-tag">C</span><span class="skill-tag">C++</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Data Engineering</div>
+      <div class="skill-tags">
+        <span class="skill-tag">ETL Pipelines</span><span class="skill-tag">Medallion Architecture</span><span class="skill-tag">Data Lakehouse</span><span class="skill-tag">Apache Spark</span><span class="skill-tag">PySpark</span><span class="skill-tag">Delta Tables</span><span class="skill-tag">Unity Catalog</span><span class="skill-tag">Data Quality Validation</span><span class="skill-tag">Star Schema</span><span class="skill-tag">Data Governance</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Platforms &amp; BI</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Azure Databricks</span><span class="skill-tag">Power BI</span><span class="skill-tag">Tableau</span><span class="skill-tag">Jupyter</span><span class="skill-tag">Git / GitHub</span><span class="skill-tag">REST APIs</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">ML &amp; Analytics</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Scikit-learn</span><span class="skill-tag">PyTorch</span><span class="skill-tag">Pandas / NumPy</span><span class="skill-tag">EDA</span><span class="skill-tag">Feature Engineering</span><span class="skill-tag">Ensemble Methods</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Cloud &amp; DevOps</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Microsoft Azure</span><span class="skill-tag">CI/CD Workflows</span><span class="skill-tag">SDLC</span><span class="skill-tag">Agile / Sprints</span><span class="skill-tag">Data Warehousing</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <div class="skill-group-title">Business &amp; Soft Skills</div>
+      <div class="skill-tags">
+        <span class="skill-tag">Stakeholder Presentations</span><span class="skill-tag">KPI Reporting</span><span class="skill-tag">Cross-functional Collaboration</span><span class="skill-tag">Public Speaking</span><span class="skill-tag">Compliance Awareness</span><span class="skill-tag">Editorial Management</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- EDUCATION -->
+<section id="education">
+  <p class="section-label">Education</p>
+  <h2 class="section-title">Academic background</h2>
+  <div class="edu-list">
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">Savitribai Phule Pune University (SPPU) — I²IT</div>
+        <div class="edu-deg">Bachelor of Engineering, Information Technology</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-gpa">9.4 / 10.0</div>
+        <div class="edu-year">Expected June 2026</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">Creative Public School &amp; Jr. College</div>
+        <div class="edu-deg">Higher Secondary Certificate (HSC)</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-gpa">79%</div>
+        <div class="edu-year">2022</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div>
+        <div class="edu-inst">Podar International School, Pimpri</div>
+        <div class="edu-deg">ICSE — 10th Grade Board</div>
+      </div>
+      <div class="edu-meta">
+        <div class="edu-gpa">89%</div>
+        <div class="edu-year">2020</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CERTIFICATIONS -->
+<section id="certifications">
+  <p class="section-label">Certifications</p>
+  <h2 class="section-title">Credentials</h2>
+  <div class="cert-grid">
+
+    <div class="cert-card">
+      <div class="cert-icon">☁</div>
+      <div>
+        <div class="cert-name">Microsoft Certified: Fabric Data Engineer Associate</div>
+        <div class="cert-year">2026</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">⚡</div>
+      <div>
+        <div class="cert-name">Microsoft Certified: Azure Data Fundamentals</div>
+        <div class="cert-year">2026</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">📊</div>
+      <div>
+        <div class="cert-name">Google Data Analytics Professional Certificate</div>
+        <div class="cert-year">2025</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">🐍</div>
+      <div>
+        <div class="cert-name">Python for Beginners</div>
+        <div class="cert-year">—</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">📈</div>
+      <div>
+        <div class="cert-name">FreeCodeCamp – Data Analysis with Python</div>
+        <div class="cert-year">—</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">🔧</div>
+      <div>
+        <div class="cert-name">Crash Course on Python — Google (Coursera)</div>
+        <div class="cert-year">—</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">🔀</div>
+      <div>
+        <div class="cert-name">Introduction to Git &amp; GitHub — Google (Coursera)</div>
+        <div class="cert-year">—</div>
+      </div>
+    </div>
+
+    <div class="cert-card">
+      <div class="cert-icon">💡</div>
+      <div>
+        <div class="cert-name">Certified C/C++ — Disha Institute</div>
+        <div class="cert-year">—</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- LEADERSHIP -->
+<section id="leadership">
+  <p class="section-label">Leadership &amp; Honors</p>
+  <h2 class="section-title">Roles &amp; recognition</h2>
+  <div class="leadership-grid">
+
+    <div class="leader-card">
+      <div class="leader-role">Chair — ACM Student Chapter</div>
+      <div class="leader-org">I²IT, SPPU</div>
+      <p class="leader-desc">Led the ACM chapter coordinating technical events, workshops, and community initiatives; managed cross-functional teams across faculty, students, and industry partners.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-role">President — First-Year Engineering Students Association</div>
+      <div class="leader-org">I²IT Student Governance</div>
+      <p class="leader-desc">Represented a large student cohort; planned association events, liaised with faculty and administration, and facilitated smooth onboarding for incoming students.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-role">Senior Editor — Dhruva Magazine</div>
+      <div class="leader-org">Editorial Leadership</div>
+      <p class="leader-desc">Directed editorial planning and content strategy; managed end-to-end college magazine publications demonstrating strong written communication and structured storytelling.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-role">Best Speaker — Podar MUN</div>
+      <div class="leader-org">Public Speaking &amp; Negotiation</div>
+      <p class="leader-desc">Awarded Best Speaker for outstanding research, persuasive argumentation, and diplomatic negotiation.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-role">Diploma in Bharatanatyam</div>
+      <div class="leader-org">Classical Dance</div>
+      <p class="leader-desc">Completed a formal diploma in Bharatanatyam, reflecting discipline, dedication, and appreciation for Indian classical art.</p>
+    </div>
+
+    <div class="leader-card">
+      <div class="leader-role">Co-author — Academic Research Paper</div>
+      <div class="leader-org">Maratha Cultural Heritage</div>
+      <p class="leader-desc">Published research on Maratha cultural heritage and weapon classification (YOLOv8, 1,787 image dataset, IEEE DataPort &amp; Mendeley Data), bridging technology and history.</p>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider" />
+
+<!-- CONTACT -->
+<section id="contact" style="padding-top: 4rem; padding-bottom: 5rem;">
+  <div class="contact-section">
+    <h2>Let's connect</h2>
+    <p>Open to Data Engineering, Software Engineering, and Analytics roles. Feel free to reach out!</p>
+    <div class="contact-links">
+      <a href="mailto:shravanick23feb@gmail.com" class="contact-link">✉ shravanick23feb@gmail.com</a>
+      <a href="https://www.linkedin.com/in/shravani-kamble-00a95b251/" target="_blank" class="contact-link">LinkedIn ↗</a>
+      <a href="https://github.com/Shravani2307-lab" target="_blank" class="contact-link">GitHub ↗</a>
+      <a href="https://shravani2307-lab.github.io/Portfolio-Website/" target="_blank" class="contact-link">Portfolio ↗</a>
+      <a href="https://drive.google.com/drive/folders/1sgo8TrPWOzWqxQUud3sWqZUZf-6Y1-bb?usp=drive_link" target="_blank" class="contact-link">Certifications ↗</a>
+    </div>
+  </div>
+</section>
 
 <footer>
-    <p>&copy; 2026 Shravani C. K. All rights reserved.</p>
-
+  © 2026 Shravani C. K. — All rights reserved.
 </footer>
-
-<!-- SCRIPTS -->
-<script>
-const toggle = document.getElementById("theme-toggle");
-const body = document.body;
-
-// Load saved theme
-if (localStorage.getItem("theme") === "dark") {
-    body.classList.add("dark-mode");
-    toggle.innerHTML = "🌙";
-}
-
-toggle.addEventListener("click", () => {
-    body.classList.toggle("dark-mode");
-
-    if (body.classList.contains("dark-mode")) {
-        toggle.innerHTML = "🌙";  
-        localStorage.setItem("theme", "dark");
-    } else {
-        toggle.innerHTML = "🌞";
-        localStorage.setItem("theme", "light");
-    }
-});
-</script>
-
 
 </body>
 </html>
